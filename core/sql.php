@@ -2,7 +2,7 @@
 function insert (string $entidade, array $dados) : string
 {
 $instrucao = "INSERT INTO ($entidade)";
-$campos implode(', ', array_keys ($dados)); 
+$campos = implode(', ', array_keys ($dados));
 $valores = implode(', ', array_values ($dados));
 $instrucao .= "({$campos})";
 $instrucao .= " VALUES ({$valores})";
@@ -27,6 +27,17 @@ if (!empty($ordem)){
 }
 
 return $instrucao;
+}
+function delete(string $entidade, array $criterio =[]) : string {
+    $instrucao = "DELETE {$entidade}";
+    if (!empty($criterio) ) {
+    $instrucao .= ' WHERE ';
+    foreach($criterio as $expressao){
+    $instrucao .= ' ' . implode (' ' , $expressao); 
+    } 
+}
+    
+    return $instrucao;
 }
 
 

@@ -20,7 +20,6 @@ if (!empty($criterio)) {
     foreach($criterio as $expressao){
 $instrucao .= ' ' . implode (' ', $expressao); 
 } 
-
 }
 
 if (!empty($ordem)){
